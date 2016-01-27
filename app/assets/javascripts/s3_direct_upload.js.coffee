@@ -21,6 +21,7 @@ $.fn.S3Uploader = (options) ->
     remove_completed_progress_bar: true
     remove_failed_progress_bar: false
     progress_bar_target: null
+    drop_zone: null
     click_submit_target: null
     allow_multiple_files: true
 
@@ -41,7 +42,7 @@ $.fn.S3Uploader = (options) ->
 
   setUploadForm = ->
     $uploadForm.find("input[type='file']").fileupload
-
+      dropZone: settings.drop_zone
       add: (e, data) ->
         file = data.files[0]
         file.unique_id = Math.random().toString(36).substr(2,16)
